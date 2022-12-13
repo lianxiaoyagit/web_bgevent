@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        head: 1,
+        eyes: 2,
+        legs: 2,
+        say: function () {
+          console.log('吃')
+        },
+        eat: function () {
+          console.log('喝')
+        },
+      }
+      function Chinese() {
+        ;(this.skin = 'yellow'), (this.language = '汉语')
+      }
+
+      // 原型
+
+      // console.log(Chinese.prototype)
+      Chinese.prototype = obj
+      Chinese.prototype.constructor = Chinese
+      // console.log(Chinese.prototype)
+      // 实例化对象
+      let c1 = new Chinese()
+      console.log(c1)
+
+      function Japanese() {
+        ;(this.skin = 'yellow'), (this.language = '日语')
+      }
+
+      // console.log(j1)
+
+      Japanese.prototype = obj
+      Japanese.prototype.constructor = Japanese
+      // 实例化
+      let j1 = new Japanese()
+      console.log(j1.eyes)
+    </script>
+  </body>
+</html>

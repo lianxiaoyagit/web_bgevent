@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: '小明',
+        age: 23,
+        sex: '男',
+        color: ['red', 'yellow', 'pink'],
+        message: {
+          score: 99,
+          index: 666,
+        },
+      }
+      let newObj = {}
+      /* 遍历 */
+      // 如果obj[key]是复杂对象，再遍历复杂的数据
+      // 第一个参数是空对象，第二个参数是源数据
+      function copy(b, a) {
+        for (let key in a) {
+          // instanceof判断一个对象是否属于另外一个构造函数的实例对象
+          if (a[key] instanceof Array) {
+            // 保证新对象也一个数组
+            b[key] = []
+            // 调用函数
+            copy(b[key], a[key])
+          } else if (a[key] instanceof Object) {
+            // 保证新对象也一个对象
+            b[key] = {}
+            // 调用函数
+            copy(b[key], a[key])
+          } else {
+            // 赋值
+            b[key] = a[key]
+          }
+        }
+      }
+      // 第一个参数是新对象，第二个参数是源数据
+      copy(newObj, obj)
+      obj.message.index = 555
+      console.log(obj, newObj)
+    </script>
+  </body>
+</html>
